@@ -1,1 +1,341 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123c65">
+<title>SMARTNOTE PCT BÉNIN</title>
+<style>
+:root {
+  --blue:#123c65;
+  --blue2:#1c5688;
+  --gold:#d6a94b;
+  --bg:#f3f6fa;
+  --white:#fff;
+  --text:#192b40;
+  --muted:#718096;
+}
+*{box-sizing:border-box}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:Arial,sans-serif;
+}
+header{
+ background:var(--blue);color:white;
+ padding:23px 18px;
+}
+header h1{font-size:23px;margin:0 0 7px}
+header p{font-size:13px;margin:0;color:#dce8f4}
+main{max-width:900px;margin:auto;padding:18px}
+.welcome{margin:10px 0 22px}
+.welcome h2{font-size:22px;margin-bottom:7px}
+.welcome p{color:var(--muted);font-size:14px}
+.card{
+ background:white;border-radius:12px;
+ padding:18px;margin-bottom:15px;
+ border:1px solid #e2e8f0;
+}
+.card h3{margin-top:0;font-size:17px}
+.roles,.stats,.grid{
+ display:grid;grid-template-columns:repeat(2,1fr);
+ gap:12px;
+}
+button{
+ border:0;border-radius:8px;padding:13px;
+ font-weight:bold;cursor:pointer;font-size:14px;
+}
+.primary{background:var(--blue);color:white}
+.secondary{background:#e8eff7;color:var(--blue)}
+.gold{background:var(--gold);color:#263448}
+.role{
+ text-align:left;background:#f0f5fa;
+ color:var(--blue);padding:18px;
+ border:1px solid #dbe5ef;
+}
+.role strong{display:block;font-size:16px;margin-bottom:7px}
+.role span{font-size:12px;color:#60758b}
+.stat{
+ background:#f0f5fa;border-radius:9px;padding:14px;
+}
+.stat strong{display:block;font-size:23px;color:var(--blue)}
+.stat small{color:var(--muted)}
+input,select,textarea{
+ width:100%;padding:12px;margin:7px 0 14px;
+ border:1px solid #ccd6e1;border-radius:7px;
+ background:white;font-size:14px;
+}
+label{font-size:13px;font-weight:bold}
+.menu{
+ display:flex;gap:8px;flex-wrap:wrap;margin-bottom:17px;
+}
+.menu button{font-size:12px;padding:11px}
+.menu button.active{background:var(--blue);color:white}
+.hidden{display:none!important}
+.item{
+ border-bottom:1px solid #e8edf3;
+ padding:13px 0;font-size:14px;
+}
+.tag{
+ display:inline-block;background:#e8f1fa;
+ color:var(--blue);padding:5px 9px;
+ border-radius:5px;font-size:11px;
+}
+.notice{
+ background:#fff7e7;border-left:4px solid var(--gold);
+ padding:13px;border-radius:5px;
+ font-size:13px;line-height:1.6;
+}
+footer{
+ text-align:center;padding:25px;color:#718096;
+ font-size:12px;
+}
+.action{margin-top:8px;width:100%}
+h2{color:var(--blue)}
+@media(max-width:480px){
+ main{padding:13px}
+ .roles,.stats,.grid{grid-template-columns:1fr 1fr}
+ .role{padding:13px}
+ header h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>SMARTNOTE PCT BÉNIN</h1>
+<p>Plateforme intelligente d'évaluation et de correction en PCT</p>
+</header>
+
+<main>
+
+<section id="home">
+<div class="welcome">
+<h2>Bienvenue sur Smartnote</h2>
+<p>Le numérique au service de l'évaluation des apprentissages en Physique-Chimie-Technologie.</p>
+</div>
+
+<div class="card">
+<h3>Choisissez votre espace</h3>
+<div class="roles">
+<button class="role" onclick="enter('teacher')">
+<strong>ESPACE ENSEIGNANT</strong>
+<span>Évaluations, barèmes, corrections et résultats.</span>
+</button>
+<button class="role" onclick="enter('student')">
+<strong>ESPACE APPRENANT</strong>
+<span>Épreuves, exercices et résultats scolaires.</span>
+</button>
+</div>
+</div>
+
+<div class="card">
+<h3>Notre mission</h3>
+<p style="font-size:14px;line-height:1.7">
+Faciliter la préparation, l'administration et la correction des évaluations de PCT dans les établissements scolaires du Bénin.
+</p>
+<div class="notice">
+La correction assistée par intelligence artificielle sera soumise à la vérification et à la validation de l'enseignant.
+</div>
+</div>
+</section>
+
+<section id="teacher" class="hidden">
+<div class="welcome">
+<h2>Espace enseignant</h2>
+<p>Bienvenue dans votre environnement pédagogique.</p>
+</div>
+
+<div class="menu">
+<button class="active" onclick="tab('dashboard',this)">Tableau de bord</button>
+<button onclick="tab('create',this)">Évaluations</button>
+<button onclick="tab('rubric',this)">Barèmes</button>
+<button onclick="tab('correction',this)">Correction</button>
+</div>
+
+<div id="dashboard">
+<div class="stats">
+<div class="stat"><strong>04</strong><small>Niveaux disponibles</small></div>
+<div class="stat"><strong>02</strong><small>Espaces utilisateurs</small></div>
+</div>
+<div class="card">
+<h3>Gestion pédagogique</h3>
+<div class="item">📚 Préparation des évaluations</div>
+<div class="item">📋 Élaboration des grilles de correction</div>
+<div class="item">📝 Traitement des copies</div>
+<div class="item">📊 Suivi des résultats</div>
+</div>
+<div class="notice">Les données de cette première version sont uniquement locales. La connexion à une base de données sera réalisée ultérieurement.</div>
+</div>
+
+<div id="create" class="hidden card">
+<h3>Créer une évaluation</h3>
+<label>Titre de l'évaluation</label>
+<input id="examTitle" placeholder="Ex : Évaluation sur les circuits électriques">
+<label>Classe</label>
+<select id="examClass">
+<option>6ème</option><option>5ème</option>
+<option>4ème</option><option>3ème</option>
+</select>
+<label>Compétence évaluée</label>
+<textarea id="competence" placeholder="Décrire la compétence visée..."></textarea>
+<label>Barème total</label>
+<input id="total" type="number" value="20">
+<button class="primary action" onclick="createExam()">Enregistrer l'évaluation</button>
+<div id="examMessage"></div>
+<div id="examList"></div>
+</div>
+
+<div id="rubric" class="hidden card">
+<h3>Grille de correction</h3>
+<label>Nom du critère</label>
+<input id="criterion" placeholder="Ex : Mobilisation des ressources">
+<label>Points attribués</label>
+<input id="points" type="number" min="0" placeholder="Ex : 5">
+<button class="primary action" onclick="addRubric()">Ajouter le critère</button>
+<div id="rubricList"></div>
+</div>
+
+<div id="correction" class="hidden card">
+<h3>Centre de correction</h3>
+<p style="font-size:14px">Espace destiné au traitement des copies et à la validation des propositions de correction.</p>
+<label>Réponse de l'apprenant</label>
+<textarea id="answer" placeholder="Saisir ou coller la réponse à examiner..."></textarea>
+<label>Réponse de référence</label>
+<textarea id="reference" placeholder="Saisir la réponse attendue..."></textarea>
+<button class="primary action" onclick="compareAnswer()">Examiner la réponse</button>
+<div id="comparison"></div>
+<div class="notice">Cette comparaison est une démonstration locale, pas une correction par IA. La note définitive relève de l'enseignant.</div>
+</div>
+
+<button class="secondary action" onclick="goHome()">Retour à l'accueil</button>
+</section>
+
+<section id="student" class="hidden">
+<div class="welcome">
+<h2>Espace apprenant</h2>
+<p>Bienvenue dans votre espace de suivi pédagogique.</p>
+</div>
+<div class="card">
+<h3>Informations scolaires</h3>
+<label>Nom et prénoms</label>
+<input id="studentName" placeholder="Votre nom et vos prénoms">
+<label>Classe</label>
+<select id="studentClass">
+<option>6ème</option><option>5ème</option>
+<option>4ème</option><option>3ème</option>
+</select>
+<button class="primary action" onclick="studentConnect()">Accéder à mon espace</button>
+<div id="studentMessage"></div>
+</div>
+<div class="card">
+<h3>Mes activités</h3>
+<div class="item">Évaluations de PCT</div>
+<div class="item">Exercices d'entraînement</div>
+<div class="item">Consultation des résultats</div>
+<div class="notice">Les comptes apprenants et les résultats personnalisés seront activés avec le système sécurisé de connexion.</div>
+</div>
+<button class="secondary action" onclick="goHome()">Retour à l'accueil</button>
+</section>
+
+</main>
+
+<footer>
+<strong>SMARTNOTE PCT BÉNIN</strong><br>
+Une innovation au service de l'éducation béninoise.<br>
+© 2026 — Tous droits réservés.
+</footer>
+
+<script>
+let exams=[];
+let rubrics=[];
+
+function enter(role){
+ document.getElementById('home').classList.add('hidden');
+ document.getElementById('teacher').classList.add('hidden');
+ document.getElementById('student').classList.add('hidden');
+ document.getElementById(role).classList.remove('hidden');
+}
+
+function goHome(){
+ document.getElementById('teacher').classList.add('hidden');
+ document.getElementById('student').classList.add('hidden');
+ document.getElementById('home').classList.remove('hidden');
+}
+
+function tab(name,button){
+ ['dashboard','create','rubric','correction'].forEach(id=>{
+ document.getElementById(id).classList.add('hidden');
+ });
+ document.getElementById(name).classList.remove('hidden');
+ document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));
+ button.classList.add('active');
+}
+
+function createExam(){
+ let title=document.getElementById('examTitle').value.trim();
+ let classe=document.getElementById('examClass').value;
+ let total=Number(document.getElementById('total').value);
+ let competence=document.getElementById('competence').value.trim();
+
+ if(!title || !total || total<=0){
+  alert('Veuillez renseigner le titre et le barème.');
+  return;
+ }
+ exams.push({title,classe,total,competence});
+ document.getElementById('examMessage').innerHTML=
+ '<p class="tag">Évaluation ajoutée à la liste locale.</p>';
+ document.getElementById('examList').innerHTML=
+ '<h3>Évaluations créées</h3>'+exams.map(e=>
+ '<div class="item"><strong>'+escapeHTML(e.title)+'</strong><br>'+
+ e.classe+' — '+e.total+' points</div>').join('');
+}
+
+function addRubric(){
+ let name=document.getElementById('criterion').value.trim();
+ let points=Number(document.getElementById('points').value);
+ if(!name || points<=0){
+  alert('Renseignez le critère et ses points.');
+  return;
+ }
+ rubrics.push({name,points});
+ document.getElementById('rubricList').innerHTML=
+ rubrics.map(r=>'<div class="item">'+escapeHTML(r.name)+
+ ' — '+r.points+' points</div>').join('');
+ document.getElementById('criterion').value='';
+ document.getElementById('points').value='';
+}
+
+function compareAnswer(){
+ let a=document.getElementById('answer').value.trim();
+ let r=document.getElementById('reference').value.trim();
+ if(!a || !r){
+  alert('Veuillez saisir les deux réponses.');
+  return;
+ }
+ let result=a.toLowerCase()===r.toLowerCase()
+ ?'Les deux réponses sont identiques.'
+ :'Les deux réponses présentent des différences.';
+ document.getElementById('comparison').innerHTML=
+ '<div class="card"><strong>Résultat de la comparaison</strong><p>'+
+ result+'</p><p>Validation finale réservée à l’enseignant.</p></div>';
+}
+
+function studentConnect(){
+ let name=document.getElementById('studentName').value.trim();
+ if(!name){alert('Veuillez saisir votre nom.');return;}
+ document.getElementById('studentMessage').innerHTML=
+ '<div class="notice">Bonjour '+escapeHTML(name)+
+ '. Votre espace de démonstration est ouvert. La connexion sécurisée sera activée ultérieurement.</div>';
+}
+
+function escapeHTML(s){
+ return s.replace(/[&<>"']/g,c=>({
+ '&':'&amp;','<':'&lt;','>':'&gt;',
+ '"':'&quot;',"'":'&#39;'
+ })[c]);
+}
+</script>
+</body>
+</html>
+
